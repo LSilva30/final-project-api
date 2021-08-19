@@ -12,7 +12,8 @@ const startServer = async () => {
   try {
     const res = await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     })
 
     console.log(`Connected to Mongo! Database name: ${res.connections[0].name}`)

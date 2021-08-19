@@ -5,7 +5,7 @@ const Schema = mongoose.Schema  // Schema becomes the variable used to create th
 const WorkoutSchema = new Schema(     // naming the new schema "workoutSchema"
   {
     level: { type: String, required: true },
-    workouts: { type: Array, required: true },
+    exercise: { type: Array, required: true },
   }
 )
 
