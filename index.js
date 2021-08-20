@@ -30,9 +30,8 @@ const startServer = async () => {
   app.use(routes)
 
   const PORT = process.env.PORT || 5000
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
+    await startServer();
     console.log(`Server ready at http://localhost:${PORT}`)
   })
 }
-
-startServer()

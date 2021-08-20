@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
 
 router.post('/workouts', (req, res) => {
   const levelFromFrontend = req.body.level    // grabbing request when experience button from frontend is clicked -> then going into body --> grabbing the level from it and assigning it into variable "levelFromFrontEnd"
+  
   Workout.findOne({ level: levelFromFrontend }) // when the level from the front end is grabbed, match it to whichever level it is to our database
   .then((foundLevel) => {                   // then assign that level into a variable "foundLevel"
     res.send(foundLevel.exercise)           // foundLevel.exercise goes into the levels 'exercise' from our DB and sends it to the front end
