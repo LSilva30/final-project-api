@@ -13,7 +13,11 @@ const startServer = async () => {
     const res = await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      auth: {
+        user: 'Luiz',
+        password: 'Luiz1995',
+      }
     })
 
     console.log(`Connected to Mongo! Database name: ${res.connections[0].name}`)
