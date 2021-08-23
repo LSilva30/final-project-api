@@ -1,3 +1,4 @@
 node_modules
 .env
 final-project-api.pem
+deploy.sh
