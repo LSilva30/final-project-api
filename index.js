@@ -14,10 +14,6 @@ const startServer = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
-      auth: {
-        user: 'Luiz',
-        password: 'Luiz1995',
-      }
     })
 
     console.log(`Connected to Mongo! Database name: ${res.connections[0].name}`)

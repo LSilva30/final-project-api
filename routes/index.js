@@ -1,16 +1,16 @@
 const router = require('express').Router()
-const Workout = require('../model/workoutSchema')   // importing the schema
+const Workout = require('../model/workoutSchema')
 
 router.get('/', (req, res) => {
   res.status(200).json({msg: 'Hey from backend'})
 })
 
 router.post('/workouts', (req, res) => {
-  const levelFromFrontend = req.body.level    // grabbing request when experience button from frontend is clicked -> then going into body --> grabbing the level from it and assigning it into variable "levelFromFrontEnd"
+  const levelFromFrontend = req.body.level 
   
-  Workout.findOne({ level: levelFromFrontend }) // when the level from the front end is grabbed, match it to whichever level it is to our database
-  .then((foundLevel) => {                   // then assign that level into a variable "foundLevel"
-    res.send(foundLevel.exercise)           // foundLevel.exercise goes into the levels 'exercise' from our DB and sends it to the front end
+  Workout.findOne({ level: levelFromFrontend })
+  .then((foundLevel) => {
+    res.send(foundLevel.exercise)
   })
 })
 
@@ -24,7 +24,6 @@ router.patch('/workouts/:level/:exerciseName', (req, res) => {
 
 router.post('/workouts/create', (req, res) => {
   const { workout, level } = req.body
-  console.log('This is the body from the POST request', req.body)
 
   Workout.findOne({ level })
   .then(foundWorkout => {
@@ -33,7 +32,6 @@ router.post('/workouts/create', (req, res) => {
         res.status(400).send({message: `Workout with name ${workout.name} already exists`})
         return true
       } else {
-        console.log('This is the workout found by the level in the DB', foundWorkout)
         foundWorkout.exercise.push(workout)
         foundWorkout.save()
         res.status(200).send({message: `Successfully created a new exercise for level ${level}`, workout })
